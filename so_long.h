@@ -46,10 +46,17 @@ void	undefined_char(t_long *map);
 void	try_to_move(t_long *map);
 void	try_to_move_2(t_long *map, int k, int i);
 void	free_map(t_long *map);
-int		c_control(t_long *map);
 void	mlx_put_img(t_long *map);
 void	mlx_init_start(t_long *map);
 void	mlx_get_image(t_long *map);
 void	ft_img(t_long *map, void *img, int i, int k);
+void	press_right(t_long *map, int x, int y);
+void	press_down(t_long *map, int x, int y);
+void	press_left(t_long *map, int x, int y);
+void	press_up(t_long *map, int x, int y);
+int		c_control(t_long *map);
+int		moving(int	key, t_long *map);
+int		ft_exit(t_long *map);
+
 
 #endif

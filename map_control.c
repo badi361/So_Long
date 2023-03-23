@@ -51,7 +51,7 @@ void	location_and_cont(t_long *map)
 	k++;
 	}
 	//printf("%c\n", map->map_line[0][34]);
-	if (map->p_counter != 1 || map->e_counter != 1)
+	if (map->p_counter != 1 || map->e_counter != 1 || map->c_counter < 1)
 	{
 		write(2, "ERROR\n", 6);
 		exit(0); 

@@ -18,7 +18,6 @@ void	mlx_get_image(t_long *map)
 	map->b_img = mlx_xpm_file_to_image(map->mlx_init, "./img/jungle.xpm", &map->width, &map->height);
 	if (!map->w_img || !map->e_img || !map->p_img || !map->c_img || !map->b_img)
 	{
-		perror("a");
 		write (2, "ERROR\n", 6);
 		exit(0);
 	}
