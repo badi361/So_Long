@@ -40,6 +40,7 @@ int main(int ac, char **av)
 	map_read(av[1], map);
 	rectangle_cont(map);
 	undefined_char(map);
+	//perror("a");
 	try_to_move(map);
 	map_read_check(av[1], map);
 	map_read(av[1], map);
@@ -47,7 +48,9 @@ int main(int ac, char **av)
 	mlx_put_img(map);
 	map->move = ft_itoa(map->p_move_count);
 	mlx_string_put(map->mlx_init, map->mlx_win, 15, 15, 0x000000, map->move);
-	mlx_hook(map->mlx_win, 17, 0, ft_exit, map);
+	//printf("%d\n", map->p_x_loca);
+	//printf("%d\n", map->p_y_loca);
 	mlx_hook(map->mlx_win, 2, 0, moving, map);
+	mlx_hook(map->mlx_win, 17, 0, ft_exit, map);
 	mlx_loop(map->mlx_init);
 }

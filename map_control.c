@@ -63,14 +63,14 @@ void	location_and_cont2(t_long *map, int k, int i)
 {
 	if (map->map_line[k][i] == 'P')
 	{
-		map->p_x_loca = i;
-		map->p_y_loca = k;
+		map->p_x_loca = i * 64;
+		map->p_y_loca = k * 64;
 		map->p_counter++;
 	}
 	if (map->map_line[k][i] == 'E')
 	{
-		map->e_x_loca = i;
-		map->e_y_loca = k;
+		map->e_x_loca = i * 64;
+		map->e_y_loca = k * 64;
 		map->e_counter++;
 	}
 	if (map->map_line[k][i] == 'C')

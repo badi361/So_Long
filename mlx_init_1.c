@@ -39,11 +39,11 @@ void	mlx_put_img(t_long *map)
 			if (map->map_line[k][i] == 'P')
 				ft_img(map, map->p_img, map->p_x_loca, map->p_y_loca);
 			if (map->map_line[k][i] == '0')
-				ft_img(map, map->b_img, i, k);
+				ft_img(map, map->b_img, i * 64, k * 64);
 			if (map->map_line[k][i] == '1')
-				ft_img(map,map->w_img, i, k);
+				ft_img(map,map->w_img, i * 64, k * 64);
 			if (map->map_line[k][i] == 'C')
-				ft_img(map, map->c_img, i, k);
+				ft_img(map, map->c_img, i * 64, k * 64);
 			if (map->map_line[k][i] == 'E')
 				ft_img(map, map->e_img, map->e_x_loca, map->e_y_loca);
 			i++;
@@ -54,5 +54,5 @@ void	mlx_put_img(t_long *map)
 
 void	ft_img(t_long *map, void *img, int i, int k)
 {
-	mlx_put_image_to_window(map->mlx_init, map->mlx_win, img, 64 * i, 64 * k);
+	mlx_put_image_to_window(map->mlx_init, map->mlx_win, img, i, k);
 }

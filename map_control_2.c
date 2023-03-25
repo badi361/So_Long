@@ -4,17 +4,17 @@ void	 try_to_move(t_long *map)
 {
 	int		result;
 
-	try_to_move_2(map, map->p_y_loca, map->p_x_loca);
+	try_to_move_2(map, map->p_y_loca / 64, map->p_x_loca / 64);
 	result = c_control(map);
 	if (result == 1)
 	{
 		write(2, "ERROR\n", 6);
 		exit(0);
 	}
-	if (map->map_line[map->e_y_loca + 1][map->e_x_loca] != 'P' 
-		&& map->map_line[map->e_y_loca - 1][map->e_x_loca] != 'P'
-		&& map->map_line[map->e_y_loca][map->e_x_loca + 1] != 'P'
-		&& map->map_line[map->e_y_loca][map->e_x_loca - 1] != 'P')
+	if (map->map_line[map->e_y_loca / 64 + 1][map->e_x_loca / 64] != 'P' 
+		&& map->map_line[map->e_y_loca / 64 - 1][map->e_x_loca / 64] != 'P'
+		&& map->map_line[map->e_y_loca / 64][map->e_x_loca / 64 + 1] != 'P'
+		&& map->map_line[map->e_y_loca / 64][map->e_x_loca / 64 - 1] != 'P')
 		{
 			write(2, "ERROR\n", 6);
 			exit(0);

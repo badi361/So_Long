@@ -32,7 +32,6 @@ void	map_read(char *name, t_long *map)
 	if (fd < 0)
 		exit(0);
 	map->map_line[i] = get_next_line(fd);
-	//perror("a");
 	while (i < map->line_size)
 	{
 		i++;
