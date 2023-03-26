@@ -17,6 +17,7 @@ void	press_up(t_long *map)
 			map->map_line[map->p_y_loca / 64 - 1][map->p_x_loca / 64] = 'P';
 			map->p_y_loca = map->p_y_loca - 64;
 			map->p_move_count++;
+			ft_printf("move count : %d\n", map->p_move_count);
 		}
 	mlx_clear_window(map->mlx_init, map->mlx_win);
 	map->move = ft_itoa(map->p_move_count);
@@ -43,6 +44,7 @@ void	press_left(t_long *map)
 			map->map_line[map->p_y_loca / 64][map->p_x_loca / 64 - 1] = 'P';
 			map->p_x_loca = map->p_x_loca - 64;
 			map->p_move_count++;
+			ft_printf("move count : %d\n", map->p_move_count);
 		}
 	mlx_clear_window(map->mlx_init, map->mlx_win);
 	map->move = ft_itoa(map->p_move_count);
@@ -69,6 +71,7 @@ void	press_down(t_long *map)
 			map->map_line[map->p_y_loca / 64 + 1][map->p_x_loca / 64] = 'P';
 			map->p_y_loca = map->p_y_loca + 64;
 			map->p_move_count++;
+			ft_printf("move count : %d\n", map->p_move_count);
 		}
 	mlx_clear_window(map->mlx_init, map->mlx_win);
 	map->move = ft_itoa(map->p_move_count);
@@ -95,6 +98,7 @@ void	press_right(t_long *map)
 			map->map_line[map->p_y_loca / 64][map->p_x_loca / 64 + 1] = 'P';
 			map->p_x_loca = map->p_x_loca + 64;
 			map->p_move_count++;
+			ft_printf("move count : %d\n", map->p_move_count);
 		}
 	mlx_clear_window(map->mlx_init, map->mlx_win);
 	map->move = ft_itoa(map->p_move_count);

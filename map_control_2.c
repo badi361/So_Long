@@ -8,7 +8,7 @@ void	 try_to_move(t_long *map)
 	result = c_control(map);
 	if (result == 1)
 	{
-		write(2, "ERROR\n", 6);
+		ft_putstr_fd("MOVE_ERROR\n", 2);
 		exit(0);
 	}
 	if (map->map_line[map->e_y_loca / 64 + 1][map->e_x_loca / 64] != 'P' 
@@ -16,7 +16,7 @@ void	 try_to_move(t_long *map)
 		&& map->map_line[map->e_y_loca / 64][map->e_x_loca / 64 + 1] != 'P'
 		&& map->map_line[map->e_y_loca / 64][map->e_x_loca / 64 - 1] != 'P')
 		{
-			write(2, "ERROR\n", 6);
+			ft_putstr_fd("MOVE_ERROR_2\n", 2);
 			exit(0);
 		}
 	free_map(map);
@@ -61,7 +61,7 @@ int	c_control(t_long *map) // gezilen her yer P olduğu için C yi toplamış ol
 	while (k < map->line_size - 1)
 	{
 		i = 0;
-		while (map->map_line[k][i] != '\r')
+		while (map->map_line[k][i] != '\r' && map->map_line[k][i] != '\n')
 		{
 			if (map->map_line[k][i] == 'C')
 				return (1);
