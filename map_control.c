@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_control.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bguzel <bguzel@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/28 04:18:22 by bguzel            #+#    #+#             */
+/*   Updated: 2023/03/28 04:40:31 by bguzel           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 void	rectangle_cont(t_long *map)
@@ -5,29 +17,21 @@ void	rectangle_cont(t_long *map)
 	int		i;
 	int		k;
 	int		l;
-	k = 0;
 
+	k = 0;
 	while (k < map->line_size && k + 1 != map->line_size)
 	{
 		i = 0;
 		l = 0;
 		while (map->map_line[k][i] != '\n' && map->map_line[k][i] != '\r')
 			i++;
-		while (map->map_line[k + 1][l] != '\n' && map->map_line[k + 1][l] != '\r' && k + 1 != map->line_size - 1)
+		while (map->map_line[k + 1][l] != '\n' &&
+			map->map_line[k + 1][l] != '\r' && k + 1 != map->line_size - 1)
 			l++;
-		if (k + 1 == map->line_size - 1)
-		{
-			while (map->map_line[k + 1][l] != '\0')
-				l++; // \n ve \0 a kadar git dediğim zaman son satırda indexler aynı olmuyordu sebebini anlamadım fakat i yi 1 azaltınca düzeldi (sebebi \n den önce gizli \r olması)
-		}
-		//ft_printf("%c", map->map_line[1][9]);
-		if (i != l)
-		{
-			ft_putstr_fd("RECTANGLE_ERROR\n", 2);
-			exit(0);
-		}
+		rectangle_cont_2(map, i, k, l);
 		k++;
 	}
+	map->x_size = i;
 	location_and_cont(map);
 }
 
@@ -42,19 +46,17 @@ void	location_and_cont(t_long *map)
 		i = 0;
 		while (map->map_line[k][i] != '\n')
 		{
-			location_and_cont2(map, k, i);
 			if (map->map_line[k][i] == '\0')
 				break ;
+			location_and_cont2(map, k, i);
 			i++;
 		}
-	//printf("%d\n", i);
 	k++;
 	}
-	//printf("%c\n", map->map_line[0][34]);
 	if (map->p_counter != 1 || map->e_counter != 1 || map->c_counter < 1)
 	{
 		ft_putstr_fd("ARG_ERROR\n", 2);
-		exit(0); 
+		exit(0);
 	}
 	wall_cont(map);
 }
@@ -77,17 +79,18 @@ void	location_and_cont2(t_long *map, int k, int i)
 		map->c_counter++;
 }
 
-void	wall_cont(t_long *map)	//normalde alt satıra geçmek için \n kullanılır fakat bazı dosya biçimlerinde \r\n şeklinde kullanılabilir. burda da bu şekiled kullanılmış.
+void	wall_cont(t_long *map)
 {
 	int		i;
 	int		k;
 
 	i = 0;
 	k = 1;
-	//printf("%d\n", map->map_line[0][34] - 1);
-	while ((map->map_line[0][i] != '\r' && map->map_line[0][i] != '\n') || map->map_line[map->line_size - 1][i] != '\0')
+	while ((map->map_line[0][i] != '\r' && map->map_line[0][i] != '\n')
+		|| map->map_line[map->line_size - 1][i] != '\0')
 	{
-		if (map->map_line[0][i] != '1' || map->map_line[map->line_size - 1][i] != '1')
+		if (map->map_line[0][i] != '1' ||
+			map->map_line[map->line_size - 1][i] != '1')
 		{
 			ft_putstr_fd("WALL_ERROR\n", 2);
 			exit(0);
@@ -116,7 +119,9 @@ void	undefined_char(t_long *map)
 		i = 0;
 		while (map->map_line[k][i] != '\r' && map->map_line[k][i] != '\n')
 		{
-			if (map->map_line[k][i] == '0' || map->map_line[k][i] == '1' || map->map_line[k][i] == 'C' || map->map_line[k][i] == 'E' || map->map_line[k][i] == 'P')
+			if (map->map_line[k][i] == '0' || map->map_line[k][i] == '1'
+				|| map->map_line[k][i] == 'C' || map->map_line[k][i] == 'E'
+					|| map->map_line[k][i] == 'P')
 				i++;
 			else
 			{

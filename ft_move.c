@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_move.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: baran <baran@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/28 04:20:38 by bguzel            #+#    #+#             */
+/*   Updated: 2023/03/28 17:47:02 by baran            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 void	press_up(t_long *map)
@@ -9,7 +21,11 @@ void	press_up(t_long *map)
 		if (map->map_line[map->p_y_loca / 64 - 1][map->p_x_loca / 64] == 'E')
 		{
 			if (map->c_counter == 0)
+			{
+				map->p_move_count++;
+				ft_printf("move count : %d\n", map->p_move_count);
 				exit(0);
+			}
 		}
 		if (map->map_line[map->p_y_loca / 64 - 1][map->p_x_loca / 64] != 'E')
 		{
@@ -19,11 +35,7 @@ void	press_up(t_long *map)
 			map->p_move_count++;
 			ft_printf("move count : %d\n", map->p_move_count);
 		}
-	mlx_clear_window(map->mlx_init, map->mlx_win);
-	map->move = ft_itoa(map->p_move_count);
-	mlx_put_img(map); 
-	mlx_string_put(map->mlx_init, map->mlx_win, 15, 15, 0x000000, map->move);
-	free(map->move);
+		refresh_map(map);
 	}
 }
 
@@ -36,7 +48,11 @@ void	press_left(t_long *map)
 		if (map->map_line[map->p_y_loca / 64][map->p_x_loca / 64 - 1] == 'E')
 		{
 			if (map->c_counter == 0)
+			{
+				map->p_move_count++;
+				ft_printf("move count : %d\n", map->p_move_count);
 				exit(0);
+			}
 		}
 		if (map->map_line[map->p_y_loca / 64][map->p_x_loca / 64 - 1] != 'E')
 		{
@@ -46,11 +62,7 @@ void	press_left(t_long *map)
 			map->p_move_count++;
 			ft_printf("move count : %d\n", map->p_move_count);
 		}
-	mlx_clear_window(map->mlx_init, map->mlx_win);
-	map->move = ft_itoa(map->p_move_count);
-	mlx_put_img(map); 
-	mlx_string_put(map->mlx_init, map->mlx_win, 15, 15, 0x000000, map->move);
-	free(map->move);
+		refresh_map(map);
 	}
 }
 
@@ -63,7 +75,11 @@ void	press_down(t_long *map)
 		if (map->map_line[map->p_y_loca / 64 + 1][map->p_x_loca / 64] == 'E')
 		{
 			if (map->c_counter == 0)
+			{
+				map->p_move_count++;			
+				ft_printf("move count : %d\n", map->p_move_count);
 				exit(0);
+			}
 		}
 		if (map->map_line[map->p_y_loca / 64 + 1][map->p_x_loca / 64] != 'E')
 		{
@@ -73,11 +89,7 @@ void	press_down(t_long *map)
 			map->p_move_count++;
 			ft_printf("move count : %d\n", map->p_move_count);
 		}
-	mlx_clear_window(map->mlx_init, map->mlx_win);
-	map->move = ft_itoa(map->p_move_count);
-	mlx_put_img(map); 
-	mlx_string_put(map->mlx_init, map->mlx_win, 15, 15, 0x000000, map->move);
-	free(map->move);
+		refresh_map(map);
 	}
 }
 
@@ -90,7 +102,11 @@ void	press_right(t_long *map)
 		if (map->map_line[map->p_y_loca / 64][map->p_x_loca / 64 + 1] == 'E')
 		{
 			if (map->c_counter == 0)
+			{
+				map->p_move_count++;			
+				ft_printf("move count : %d\n", map->p_move_count);
 				exit(0);
+			}
 		}
 		if (map->map_line[map->p_y_loca / 64][map->p_x_loca / 64 + 1] != 'E')
 		{
@@ -100,19 +116,12 @@ void	press_right(t_long *map)
 			map->p_move_count++;
 			ft_printf("move count : %d\n", map->p_move_count);
 		}
-	mlx_clear_window(map->mlx_init, map->mlx_win);
-	map->move = ft_itoa(map->p_move_count);
-	mlx_put_img(map); 
-	mlx_string_put(map->mlx_init, map->mlx_win, 15, 15, 0x000000, map->move);
-	free(map->move);
+		refresh_map(map);
 	}
 }
-int	 moving(int	key, t_long *map)
+
+int	moving(int key, t_long *map)
 {
-	/*map->p_x_loca = map->p_x_loca * 64;
-	map->p_y_loca = map->p_y_loca * 64;
-	printf("%d\n", map->p_y_loca);
-	printf("%d\n", map->p_x_loca);*/
 	if (key == 53)
 	{
 		mlx_destroy_window(map->mlx_init, map->mlx_win);
@@ -125,6 +134,6 @@ int	 moving(int	key, t_long *map)
 	else if (key == 1)
 		press_down(map);
 	else if (key == 2)
-		press_right(map);   
+		press_right(map);
 	return (0);
 }

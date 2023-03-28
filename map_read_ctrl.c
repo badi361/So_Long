@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_read_ctrl.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bguzel <bguzel@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/28 04:16:41 by bguzel            #+#    #+#             */
+/*   Updated: 2023/03/28 04:29:44 by bguzel           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
-void    map_read_check(char *name, t_long *map)
+void	map_read_check(char *name, t_long *map)
 {
 	int		fd;
 	int		size;
@@ -32,10 +44,29 @@ void	map_read(char *name, t_long *map)
 	if (fd < 0)
 		exit(0);
 	map->map_line[i] = get_next_line(fd);
+	if (map->map_line[i] == NULL)
+	{
+		ft_putstr_fd("Map Is Empty\n", 2);
+		exit(0);
+	}
 	while (i < map->line_size)
 	{
 		i++;
 		map->map_line[i] = get_next_line(fd);
 	}
 	close(fd);
+}
+
+void	rectangle_cont_2(t_long *map, int i, int k, int l)
+{
+	if (k + 1 == map->line_size - 1)
+	{
+		while (map->map_line[k + 1][l] != '\0')
+			l++;
+	}
+	if (i != l)
+	{
+		ft_putstr_fd("RECTANGLE_ERROR\n", 2);
+		exit(0);
+	}
 }
