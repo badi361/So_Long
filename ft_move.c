@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_move.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baran <baran@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bguzel <bguzel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 04:20:38 by bguzel            #+#    #+#             */
-/*   Updated: 2023/03/28 17:47:02 by baran            ###   ########.fr       */
+/*   Updated: 2023/04/03 15:10:37 by bguzel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	press_down(t_long *map)
 		{
 			if (map->c_counter == 0)
 			{
-				map->p_move_count++;			
+				map->p_move_count++;
 				ft_printf("move count : %d\n", map->p_move_count);
 				exit(0);
 			}
@@ -103,7 +103,7 @@ void	press_right(t_long *map)
 		{
 			if (map->c_counter == 0)
 			{
-				map->p_move_count++;			
+				map->p_move_count++;
 				ft_printf("move count : %d\n", map->p_move_count);
 				exit(0);
 			}
