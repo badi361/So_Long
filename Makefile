@@ -6,7 +6,7 @@ FREAMS = -framework OpenGL -framework AppKit
 MLX = ./mlx/libmlx.a
 LIBFT = ./ft_libft/libft.a
 GNL = ./get_next_line/get_next_line.a
-PRNTF = ./FT_PRINTF/libftprintf.a
+PRNTF = ./printf/libftprintf.a
 
 all: $(NAME)
 
@@ -26,19 +26,19 @@ $(GNL):
 	@make -C ./get_next_line
 
 $(PRNTF):
-	@make -C ./FT_PRINTF
+	@make -C ./printf
 
 clean:
 	rm -f *.o
 	@make clean -C ./mlx
 	@make clean -C ./ft_libft
 	@make clean -C ./get_next_line
-	@make clean -C ./FT_PRINTF
+	@make clean -C ./printf
 
 fclean: clean
 	rm -f so_long
 	@make fclean -C ./ft_libft
 	@make fclean -C ./get_next_line
-	@make fclean -C ./FT_PRINTF
+	@make fclean -C ./printf
 
 re:fclean all

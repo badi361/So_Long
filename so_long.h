@@ -6,7 +6,7 @@
 /*   By: bguzel <bguzel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 04:15:54 by bguzel            #+#    #+#             */
-/*   Updated: 2024/01/17 18:01:28 by bguzel           ###   ########.fr       */
+/*   Updated: 2024/01/17 18:16:38 by bguzel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include "mlx/mlx.h"
 # include "./get_next_line/get_next_line.h"
 # include "./ft_libft/libft.h" 
-# include "./FT_PRINTF/ft_printf.h"
+# include "./printf/ft_printf.h"
 
 typedef struct s_long
 {
