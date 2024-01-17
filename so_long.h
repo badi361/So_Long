@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baran <baran@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bguzel <bguzel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 04:15:54 by bguzel            #+#    #+#             */
-/*   Updated: 2023/03/28 17:46:13 by baran            ###   ########.fr       */
+/*   Updated: 2024/01/17 18:01:28 by bguzel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include "mlx/mlx.h"
-# include "./getnextline/get_next_line.h"
-# include "./libft/libft.h" 
-# include "./ft_printf/ft_printf.h"
+# include "./get_next_line/get_next_line.h"
+# include "./ft_libft/libft.h" 
+# include "./FT_PRINTF/ft_printf.h"
 
 typedef struct s_long
 {
